@@ -2,7 +2,7 @@ categories:
 - collections
 questions:
 - variable: collection.logusername
-  default: "SA_EXT_LOG"
+  default: "username"
   description: "ServiceNow username for logging"
   type: string
   label: ServiceNow Log Username
