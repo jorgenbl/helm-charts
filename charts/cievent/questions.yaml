@@ -1,0 +1,53 @@
+categories:
+- collections
+questions:
+- variable: collection.logusername
+  default: "SA_EXT_LOG"
+  description: "ServiceNow username for logging"
+  type: string
+  label: ServiceNow Log Username
+- variable: collection.logpassword
+  default: "xxxx"
+  description: "ServiceNow password for logging"
+  type: password
+  label: ServiceNow Log Password
+- variable: collection.tz
+  default: "Europe/Oslo"
+  description: "The timezone used by nagios"
+  type: string
+  label: Nagios Timezone
+- variable: collection.midusername
+  default: "username"
+  description: "The MID api username"
+  type: string
+  label: MID api username
+- variable: collection.midpassword
+  default: "xxxx"
+  description: "The password for the mid api user"
+  type: password
+  label: MID user password
+- variable: collection.midurl
+  default: "http://localhost"
+  description: "The MID url"
+  type: string
+  label: MID url
+- variable: collection.configurl
+  default: "http://localhost"
+  description: "The Config API URL"
+  type: string
+  label: Config API URL
+- variable: collection.configusername
+  default: "username"
+  description: "The Config api username"
+  type: string
+  label: Config api username
+- variable: collection.configpassword
+  default: "xxxx"
+  description: "The password for the config api user"
+  type: password
+  label: Config user password
+- variable: collection.locallog
+  default: "yes"
+  description: "Enable local logging on container"
+  type: string
+  label: Enable local logging

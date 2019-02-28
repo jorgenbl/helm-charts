@@ -23,18 +23,34 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+          imagePullSecrets: {{ .Values.image.pullSecrets }}
+          env:
+            - name: USERNAME
+              value: {{ .Values.collection.logusername }}
+            - name: PASSWORD
+              value: {{ .Values.collection.logpassword }}
+            - name: TZ
+              value: {{ .Values.collection.tz }}
+            - name: CONFIGURL
+              value: {{ .Values.collection.configurl }}
+            - name: CONFIGUSER
+              value: {{ .Values.collection.configusername }}
+            - name: CONFIGPASS
+              valueFrom:
+                secretKeyRef:
+                  key:  configpassword
+                  name: {{ .Release.Name }}-auth
+            - name: MIDUSER
+              value: {{ .Values.collection.miduser }}
+            - name: MIDURL
+              value: {{ .Values.collection.midurl }}
+            - name: MIDPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key:  midpassword
+                  name: {{ .Release.Name }}-auth
+            - name: LOCAL_LOG
+              value: {{ .Values.collection.locallog }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

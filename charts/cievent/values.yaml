@@ -12,6 +12,19 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
+collection:
+  logusername: username
+  logpassword: thesecretpassword
+  tz: Europe/Oslo
+  configurl: http://localhost
+  configusername: username
+  configpassword: thesecretpassword
+  midurl: http://localhost
+  miduser: username
+  midpassword: thesecretpassword
+  locallog: "yes"
+
+
 service:
   type: ClusterIP
   port: 80
