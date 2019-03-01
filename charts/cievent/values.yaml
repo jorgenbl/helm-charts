@@ -22,7 +22,7 @@ collection:
   midurl: http://localhost
   miduser: username
   midpassword: thesecretpassword
-  locallog: "yes"
+  locallog: sant
 
 
 service:

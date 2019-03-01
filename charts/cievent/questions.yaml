@@ -47,7 +47,7 @@ questions:
   type: password
   label: Config user password
 - variable: collection.locallog
-  default: "yes"
+  default: "sant"
   description: "Enable local logging on container"
   type: string
   label: Enable local logging
