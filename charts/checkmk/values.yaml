@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: reg-proxy.daxdigital.net/overvaakning/checkmk:1.0-develop
-  tag: develop
+  repository: reg-proxy.daxdigital.net/overvaakning/checkmk
+  tag: 1.0-develop
   pullPolicy: Always
 
 nameOverride: ""
