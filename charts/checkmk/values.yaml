@@ -21,6 +21,7 @@ servicenow:
 checkmkconf:
   password: "test123"
   automationsecret: "test123"
+  hostport: 8080
 
 persistence:
   enabled: false

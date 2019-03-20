@@ -33,6 +33,13 @@ questions:
   type: password
   label: Automation Secret
   group: "Check_MK Configuration"
+- variable: checkmkconf.hostport
+  default: 8080
+  required: true
+  description: "Port to expose Check_MK"
+  type: integer
+  label: Port
+  group: "Check_MK Configuration"
 - variable: servicenow.url
   default: "https://mymid.url"
   required: true
