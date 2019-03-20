@@ -69,3 +69,11 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
+      volumes:
+      - name: work-vol
+      {{- if .Values.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.persistence.existingClaim | default (include "checkmk.fullname" .) }}
+      {{- else }}
+        emptyDir: {}
+      {{- end -}}
