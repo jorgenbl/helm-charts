@@ -21,7 +21,6 @@ spec:
     spec:
       imagePullSecrets:
       - name: {{ .Values.image.pullSecret }}
-      hostname: {{ .Values.checkmk.name }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
