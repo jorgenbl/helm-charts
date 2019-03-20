@@ -12,6 +12,10 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
+service:
+  type: ClusterIP
+  port: 80
+
 servicenow:
   url: "http://{MID_Server_IP}:{MID_Web_Server_Port}/api/mid/em/jsonv2"
   name: "myname"
