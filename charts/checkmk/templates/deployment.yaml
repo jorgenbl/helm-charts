@@ -29,7 +29,7 @@ spec:
             privileged: true
           volumeMounts:
           - mountPath: /omd/sites
-            name: work-vol
+            name: work-vol2
           ports:
             - name: http
               containerPort: 5000
@@ -70,7 +70,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       volumes:
-      - name: work-vol
+      - name: work-vol2
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
           claimName: {{ .Values.persistence.existingClaim | default (include "checkmk.fullname" .) }}
