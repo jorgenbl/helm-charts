@@ -1,0 +1,63 @@
+categories:
+- servicenow
+questions:
+- variable: persistence.enabled
+  description: "Enable StorageClass"
+  label: Persistence enabled
+  type: boolean
+  default: false
+  group: "Persistence"
+  show_subquestion_if: true
+  subquestions:
+    - variable: persistence.storageClass
+      default: ""
+      description: "Select StorageClass"
+      type: storageclass
+      label: StorageClass
+    - variable: persistence.size
+      default: "5Gi"
+      description: "PVC size"
+      type: string
+      label: PVC size
+- variable: checkmkconf.password
+  default: "test123"
+  required: true
+  description: "Check_MK login password"
+  type: password
+  label: Password
+  group: "Check_MK Configuration"
+- variable: checkmkconf.automationsecret
+  default: "test123"
+  required: true
+  description: "Check_MK automation secret"
+  type: password
+  label: Password
+  group: "Check_MK Configuration"
+- variable: servicenow.url
+  default: "https://mymid.url"
+  required: true
+  description: "Servicenow MID URL"
+  type: string
+  label: URL
+  group: "Servicenow Configuration"
+- variable: servicenow.username
+  default: ""
+  required: true
+  description: "Servicenow API username"
+  type: string
+  label: Username
+  group: "Servicenow Configuration"
+- variable: servicenow.password
+  default: ""
+  required: true
+  description: "Servicenow API password"
+  type: password
+  label: Password
+  group: "Servicenow Configuration"
+- variable: image.pullSecret
+  default: "maxdigital"
+  required: true
+  description: "Registry secret to use"
+  type: string
+  label: Registry
+  group: Registry

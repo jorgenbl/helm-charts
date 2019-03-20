@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "checkmk.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "checkmk.name" . }}
+    helm.sh/chart: {{ include "checkmk.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "checkmk.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "checkmk.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      imagePullSecrets:
+      - name: {{ .Values.image.pullSecret }}
+      hostname: {{ .Values.checkmk.name }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            privileged: true
+          volumeMounts:
+          - mountPath: /omd/sites
+            name: work-vol
+          env:
+          - name: CMK_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "checkmk.fullname" . }}
+                key: checkmk-password
+          - name: AUTOMATION_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "checkmk.fullname" . }}
+                key: checkmk-automation-secret
+          - name: SNOW_MID_PASSWD
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "checkmk.fullname" . }}
+                key: servicenow-password
+          - name: SNOW_MID_URL
+            value: {{ .Values.servicenow.url | quote }}
+          - name: SN_USER
+            value: {{ .Values.servicenow.username | quote }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
