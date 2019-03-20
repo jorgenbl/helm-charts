@@ -15,3 +15,5 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+  selector:
+    workload.user.cattle.io/workloadselector: {{ template "fullname" . }}
