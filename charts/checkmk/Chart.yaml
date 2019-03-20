@@ -2,5 +2,4 @@ apiVersion: v1
 appVersion: "1.0"
 description: A Helm chart for Kubernetes
 name: checkmk
-version: 0.1.0
-icon: https://truepathtechnologies.com/wp-content/uploads/2018/07/check_mk.png
+version: 0.1.1
