@@ -30,3 +30,18 @@ Create chart name and version as used by the chart label.
 {{- define "checkmk.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+
+{{- /*
+checkmk.labels.standard prints the standard artemis Helm labels.
+The standard labels are frequently used in metadata.
+*/ -}}
+{{- define "checkmk.labels.standard" -}}
+app: {{ template "checkmk.name" . }}
+chart: {{ template "checkmk.chart" . }}
+heritage: {{ .Release.Service | quote }}
+release: {{ .Release.Name | quote }}
+{{- end -}}
+
+{{- define "imagePullSecret" }}
+{{- printf "{\"auths\": {\"%s\": {\"auth\": \"%s\"}}}" .Values.imageCredentials.registry (printf "%s:%s" .Values.imageCredentials.username .Values.imageCredentials.password | b64enc) | b64enc }}
+{{- end }}
