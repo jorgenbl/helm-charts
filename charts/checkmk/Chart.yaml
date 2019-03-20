@@ -3,4 +3,4 @@ appVersion: "1.0"
 description: A Helm chart for Kubernetes
 name: checkmk
 version: 0.1.0
-icon: https://www.savision.com/wp-content/uploads/2018/09/check_mk-logo.png
+icon: https://mathias-kettner.com/images/apple-touch-icon.png
