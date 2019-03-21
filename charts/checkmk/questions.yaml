@@ -37,7 +37,7 @@ questions:
   default: 8080
   required: true
   description: "Port to expose Check_MK"
-  type: int
+  type: string
   label: Port
   group: "Check_MK Configuration"
 - variable: servicenow.url
