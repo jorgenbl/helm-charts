@@ -53,7 +53,7 @@ spec:
                 key: servicenow-password
           - name: SNOW_MID_URL
             value: {{ .Values.servicenow.url | quote }}
-          - name: SNOW_MID_URL
+          - name: SNOW_MID_USER
             value: {{ .Values.servicenow.username | quote }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
