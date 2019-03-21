@@ -5,8 +5,8 @@ metadata:
   annotations:
     field.cattle.io/targetWorkloadIds: '["deployment:{{ include "checkmk.name" . }}:{{ .Release.Name }}"]'
   labels:
-    app.kubernetes.io/name: {{ include "mid-server.name" . }}
-    helm.sh/chart: {{ include "mid-server.chart" . }}
+    app.kubernetes.io/name: {{ include "checkmk.name" . }}
+    helm.sh/chart: {{ include "checkmk.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
