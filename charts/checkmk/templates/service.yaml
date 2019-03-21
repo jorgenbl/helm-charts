@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "checkmk.fullname" . }}
   annotations:
-    field.cattle.io/targetWorkloadIds: '["deployment:{{ include "checkmk.name" . }}:{{ .Release.Name }}"]'
+    field.cattle.io/targetWorkloadIds: '["deployment:{{ include "checkmk.name" . }}:{{ include "checkmk.fullname" . }}"]'
   labels:
 {{ include "checkmk.labels.standard" . | indent 4 }}
 spec:
