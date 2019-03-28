@@ -57,6 +57,17 @@ spec:
             value: {{ .Values.servicenow.username | quote }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+        - name: "{{ .Chart.Name }}-nginx"
+          image: "{{ .Values.nginximage.repository }}:{{ .Values.nginximage.tag }}"
+          imagePullPolicy: {{ .Values.nginximage.pullPolicy }}
+          env:
+          - name: AUTOMATION_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "checkmk.fullname" . }}
+                key: checkmk-automation-secret
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
