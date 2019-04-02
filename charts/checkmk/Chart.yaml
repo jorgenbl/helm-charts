@@ -1,6 +1,6 @@
 apiVersion: v1
 appVersion: "1.0"
 description: A Helm chart for Kubernetes
-name: checkmk
+name: checkmk-hostport
 version: 0.1.0
 icon: https://mathias-kettner.com/images/apple-touch-icon.png
