@@ -57,14 +57,14 @@ questions:
   label: URL
   group: "Servicenow Configuration"
 - variable: servicenow.username
-  default: ""
+  default: "foo"
   required: true
   description: "Servicenow API username"
   type: string
   label: Username
   group: "Servicenow Configuration"
 - variable: servicenow.password
-  default: ""
+  default: "bar"
   required: true
   description: "Servicenow API password"
   type: password
