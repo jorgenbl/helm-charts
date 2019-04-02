@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "checkmk.fullname" . }}
   annotations:
-    field.cattle.io/targetWorkloadIds: '["deployment:{{ include "checkmk.name" . }}:{{ include "checkmk.fullname" . }}"]'
+    #field.cattle.io/targetWorkloadIds: '["deployment:{{ include "checkmk.name" . }}:{{ include "checkmk.fullname" . }}"]'
   labels:
 {{ include "checkmk.labels.standard" . | indent 4 }}
 spec:
@@ -15,4 +15,6 @@ spec:
       protocol: TCP
       name: default
   selector:
+    app.kubernetes.io/name: {{ include "checkmk.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
     #workloadID_eventsystem: "true"
