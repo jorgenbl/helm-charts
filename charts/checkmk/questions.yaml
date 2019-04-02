@@ -33,7 +33,7 @@ questions:
   type: password
   label: Automation Secret
   group: "Check_MK Configuration"
-- variable: checkmkconf.expose
+- variable: checkmkconf.exposed
   default: true
   description: "Expose Check_MK with hostport"
   type: boolean
