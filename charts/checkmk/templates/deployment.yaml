@@ -30,13 +30,13 @@ spec:
           volumeMounts:
           - mountPath: /omd/sites
             name: work-vol2
-          {{- if .Values.checkmkconf.exposed -}}
+{{- if .Values.checkmkconf.exposed -}}
           ports:
             - name: http
               containerPort: 5000
               hostPort: {{ .Values.checkmkconf.hostport }}
               protocol: TCP
-          {{- end }}
+{{- end }}
           env:
           - name: CMK_PASSWORD
             valueFrom:
