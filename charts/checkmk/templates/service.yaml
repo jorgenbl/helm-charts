@@ -15,4 +15,4 @@ spec:
       protocol: TCP
       name: default
   selector:
-    workloadID_eventsystem: "true"
+    #workloadID_eventsystem: "true"
