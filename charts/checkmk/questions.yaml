@@ -33,13 +33,22 @@ questions:
   type: password
   label: Automation Secret
   group: "Check_MK Configuration"
-#- variable: checkmkconf.hostport
-#  default: 8080
-#  required: true
-#  description: "Port to expose Check_MK"
-#  type: string
-#  label: Port
-#  group: "Check_MK Configuration"
+- variable: checkmkconf.expose
+  default: true
+  description: "Expose Check_MK with hostport"
+  type: boolean
+  label: Expose Check_MK with a hostport
+  show_subquestion_if: true
+  group: "Expose Check_MK"
+  required: true
+  subquestions:
+  - variable: checkmkconf.hostport
+    default: "8080"
+    required: false
+    description: "Port to expose Check_MK"
+    type: string
+    label: Port
+    group: "Check_MK Configuration"
 - variable: servicenow.url
   default: "http://{MID_Server_IP}:{MID_Web_Server_Port}/api/mid/em/jsonv2"
   required: true

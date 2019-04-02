@@ -30,6 +30,7 @@ servicenow:
 checkmkconf:
   password: "test123"
   automationsecret: "test123"
+  exposed: true
   hostport: 8080
 
 nginx:
