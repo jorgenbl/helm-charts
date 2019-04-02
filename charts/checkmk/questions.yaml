@@ -50,7 +50,7 @@ questions:
     label: Port
     group: "Check_MK Configuration"
 - variable: servicenow.url
-  default: "http://{MID_Server_IP}:{MID_Web_Server_Port}/api/mid/em/jsonv2"
+  default: "http://midip:midport/api/mid/em/jsonv2"
   required: true
   description: "Servicenow MID URL"
   type: string
