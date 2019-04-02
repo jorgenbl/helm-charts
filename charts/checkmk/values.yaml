@@ -30,7 +30,23 @@ servicenow:
 checkmkconf:
   password: "test123"
   automationsecret: "test123"
-  hostport: 8080
+
+ingress:
+  enabled: true
+  annotations: {
+    # nginx.ingress.kubernetes.io/rewrite-target: /,
+    # nginx.ingress.kubernetes.io/add-base-url: "true"
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  }
+  path: /cmk/check_mk
+  hosts:
+    - docker05.10.21.14.25.xip.io
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
 
 nginx:
   username: "foo"

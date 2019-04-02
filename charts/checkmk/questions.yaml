@@ -33,13 +33,6 @@ questions:
   type: password
   label: Automation Secret
   group: "Check_MK Configuration"
-#- variable: checkmkconf.hostport
-#  default: 8080
-#  required: true
-#  description: "Port to expose Check_MK"
-#  type: string
-#  label: Port
-#  group: "Check_MK Configuration"
 - variable: servicenow.url
   default: "http://{MID_Server_IP}:{MID_Web_Server_Port}/api/mid/em/jsonv2"
   required: true
@@ -82,3 +75,18 @@ questions:
   type: string
   label: Registry
   group: Registry
+- variable: ingress.enabled
+  default: true
+  description: "Expose app using Layer 7 Load Balancer - ingress"
+  type: boolean
+  label: Expose app using Layer 7 Load Balancer
+  show_subquestion_if: true
+  group: "Services and Load Balancing"
+  required: true
+  subquestions:
+  - variable: ingress.hosts[0]
+    default: "xip.io"
+    description: "Hostname to your app installation"
+    type: hostname
+    required: true
+    label: Hostname
