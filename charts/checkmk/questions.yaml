@@ -43,7 +43,7 @@ questions:
   required: true
   subquestions:
   - variable: checkmkconf.hostport
-    default: "8080"
+    default: 8080
     required: false
     description: "Port to expose Check_MK"
     type: string
