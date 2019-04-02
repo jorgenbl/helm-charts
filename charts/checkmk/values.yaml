@@ -22,7 +22,7 @@ service:
   port: 80
 
 servicenow:
-  url: "http://{MID_Server_IP}:{MID_Web_Server_Port}/api/mid/em/jsonv2"
+  url: "http://midip:midport/api/mid/em/jsonv2"
   name: "myname"
   username: "myusername"
   password: "mypass"
