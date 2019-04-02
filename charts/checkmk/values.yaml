@@ -22,7 +22,7 @@ service:
   port: 80
 
 servicenow:
-  url: "http://{MID_Server_IP}:{MID_Web_Server_Port}/api/mid/em/jsonv2"
+  url: "http://midip:midport/api/mid/em/jsonv2"
   name: "myname"
   username: "myusername"
   password: "mypass"
@@ -30,7 +30,23 @@ servicenow:
 checkmkconf:
   password: "test123"
   automationsecret: "test123"
-  hostport: 8080
+
+ingress:
+  enabled: true
+  annotations: {
+    # nginx.ingress.kubernetes.io/rewrite-target: /,
+    # nginx.ingress.kubernetes.io/add-base-url: "true"
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  }
+  path: /cmk/check_mk
+  hosts:
+    - docker05.10.21.14.25.xip.io
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
 
 nginx:
   username: "foo"
