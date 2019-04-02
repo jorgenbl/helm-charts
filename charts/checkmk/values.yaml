@@ -32,6 +32,10 @@ checkmkconf:
   automationsecret: "test123"
   hostport: 8080
 
+nginx:
+  username: "foo"
+  password: "bar"
+
 persistence:
   enabled: false
   storageClass: ""

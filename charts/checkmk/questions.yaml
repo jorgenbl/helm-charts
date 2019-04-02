@@ -61,6 +61,20 @@ questions:
   type: password
   label: Password
   group: "Servicenow Configuration"
+- variable: nginx.username
+  default: "foo"
+  required: true
+  description: "Check_MK reverse proxy basic auth username"
+  type: string
+  label: Username
+  group: "Servicenow Configuration"
+- variable: "Nginx Configuration"
+  default: "bar"
+  required: true
+  description: "Check_MK reverse proxy basic auth password"
+  type: password
+  label: Password
+  group: "Nginx Configuration"
 - variable: image.pullSecret
   default: "maxdigital"
   required: true

@@ -30,11 +30,11 @@ spec:
           volumeMounts:
           - mountPath: /omd/sites
             name: work-vol2
-          ports:
-            - name: http
-              containerPort: 5000
-              hostPort: {{ default 8080 .Values.checkmkconf.hostport }}
-              protocol: TCP
+          #ports:
+          #  - name: http
+          #    containerPort: 5000
+          #    hostPort: {{ .Values.checkmkconf.hostport }}
+          #    protocol: TCP
           env:
           - name: CMK_PASSWORD
             valueFrom:
@@ -61,6 +61,13 @@ spec:
           image: "{{ .Values.nginximage.repository }}:{{ .Values.nginximage.tag }}"
           imagePullPolicy: {{ .Values.nginximage.pullPolicy }}
           env:
+          - name: BASIC_AUTH_USER
+            value: {{ .Values.nginx.username | quote }}
+          - name: BASIC_AUTH_PASSWD
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "checkmk.fullname" . }}
+                key: checkmk-nginx-password
           - name: AUTOMATION_SECRET
             valueFrom:
               secretKeyRef:
