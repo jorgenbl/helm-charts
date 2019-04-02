@@ -10,8 +10,8 @@ spec:
   type: {{ .Values.service.type }}
   clusterIP: None
   ports:
-    - port: 42
-      targetPort: 42
+    - port: 5000
+      targetPort: 5000
       protocol: TCP
       name: default
   selector:
