@@ -30,6 +30,8 @@ spec:
           volumeMounts:
           - mountPath: /omd/sites
             name: work-vol2
+          - mountPath: /opt/omd/sites/cmk/tmp
+            name: ramdisk
           env:
           - name: CMK_PASSWORD
             valueFrom:
@@ -90,3 +92,7 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end -}}
+      - emptyDir:
+          medium: Memory
+          sizeLimit: 100Mi
+        name: ramdisk
