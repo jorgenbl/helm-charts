@@ -92,7 +92,7 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end -}}
-      - emptyDir:
+      - name: ramdisk
+        emptyDir:
           medium: Memory
           sizeLimit: 100Mi
-        name: ramdisk
