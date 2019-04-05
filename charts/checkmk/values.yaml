@@ -9,6 +9,11 @@ image:
   tag: 1.0-develop
   pullPolicy: Always
 
+initImage:
+  repository: reg-proxy.daxdigital.net/overvaakning/checkmk_init
+  tag: 1.0-develop
+  pullPolicy: Always
+
 nginximage:
   repository: reg-proxy.daxdigital.net/overvaakning/checkmk_nginx
   tag: 1.0-develop

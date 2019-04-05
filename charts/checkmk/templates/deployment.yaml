@@ -21,6 +21,21 @@ spec:
     spec:
       imagePullSecrets:
       - name: {{ .Values.image.pullSecret }}
+      initContainers:
+        - command:
+          - /docker-entrypoint.sh
+          env:
+          - name: CMK_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "checkmk.fullname" . }}
+                key: checkmk-password
+          image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.tag }}"
+          imagePullPolicy: Always
+          name: checkmk-init
+          volumeMounts:
+          - mountPath: /omd/sites
+            name: work-vol2
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
