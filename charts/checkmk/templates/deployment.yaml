@@ -28,10 +28,10 @@ spec:
           securityContext:
             privileged: true
           volumeMounts:
-          - mountPath: /omd/sites
-            name: work-vol2
           - mountPath: /opt/omd/sites/cmk/tmp
             name: ramdisk
+          - mountPath: /omd/sites
+            name: work-vol2
           env:
           - name: CMK_PASSWORD
             valueFrom:
@@ -85,6 +85,10 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       volumes:
+      - emptyDir: 
+          medium: Memory
+          sizeLimit: 100Mi
+        name: ramdisk
       - name: work-vol2
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
@@ -92,7 +96,3 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end -}}
-      - name: ramdisk
-        emptyDir:
-          medium: Memory
-          sizeLimit: 100Mi
