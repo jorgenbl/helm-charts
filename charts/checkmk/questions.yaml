@@ -6,7 +6,7 @@ questions:
   label: Persistence enabled
   type: boolean
   default: false
-  group: "Persistence"
+  group: "Persistence /var"
   show_subquestion_if: true
   subquestions:
     - variable: persistence.storageClass
