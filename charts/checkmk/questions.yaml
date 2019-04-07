@@ -5,8 +5,8 @@ questions:
   description: "Enable StorageClass"
   label: Persistence enabled
   type: boolean
-  default: false
-  group: "Persistence Configuration Files"
+  default: true
+  group: "Persistence"
   show_subquestion_if: true
   subquestions:
     - variable: persistence.storageClass

@@ -35,7 +35,7 @@ spec:
           name: checkmk-init
           volumeMounts:
           - mountPath: /omd/sites
-            name: work-vol2
+            name: vol1
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -46,7 +46,7 @@ spec:
           - mountPath: /opt/omd/sites/cmk/tmp
             name: ramdisk
           - mountPath: /omd/sites
-            name: work-vol2
+            name: vol1
           env:
           - name: CMK_PASSWORD
             valueFrom:
@@ -104,7 +104,7 @@ spec:
           medium: Memory
           sizeLimit: 100Mi
         name: ramdisk
-      - name: work-vol2
+      - name: vol1
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
           claimName: {{ .Values.persistence.existingClaim | default (include "checkmk.fullname" .) }}
