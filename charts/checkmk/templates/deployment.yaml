@@ -69,24 +69,6 @@ spec:
             value: {{ .Values.servicenow.username | quote }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-        - name: "{{ .Chart.Name }}-nginx"
-          image: "{{ .Values.nginximage.repository }}:{{ .Values.nginximage.tag }}"
-          imagePullPolicy: {{ .Values.nginximage.pullPolicy }}
-          env:
-          - name: BASIC_AUTH_USER
-            value: {{ .Values.nginx.username | quote }}
-          - name: BASIC_AUTH_PASSWD
-            valueFrom:
-              secretKeyRef:
-                name: {{ include "checkmk.fullname" . }}
-                key: checkmk-nginx-password
-          - name: AUTOMATION_SECRET
-            valueFrom:
-              secretKeyRef:
-                name: {{ include "checkmk.fullname" . }}
-                key: checkmk-automation-secret
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
