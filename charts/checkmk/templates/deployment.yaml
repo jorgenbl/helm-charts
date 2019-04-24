@@ -3,10 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "checkmk.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "checkmk.name" . }}
-    helm.sh/chart: {{ include "checkmk.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{ include "checkmk.labels.standard" . | indent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -82,7 +79,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       volumes:
-      - emptyDir: 
+      - emptyDir:
           medium: Memory
           sizeLimit: 100Mi
         name: ramdisk

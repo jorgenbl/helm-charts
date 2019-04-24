@@ -9,10 +9,7 @@ metadata:
 {{ toYaml . | indent 4 }}
 {{- end }}
   labels:
-    app: {{ template "checkmk.fullname" . }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: "{{ .Release.Name }}"
-    heritage: "{{ .Release.Service }}"
+{{ include "checkmk.labels.standard" . | indent 4 }}
 spec:
   accessModes:
     - {{ .Values.persistence.accessMode | quote }}
