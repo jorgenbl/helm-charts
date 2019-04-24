@@ -32,14 +32,14 @@ Create chart name and version as used by the chart label.
 {{- end -}}
 
 {{- /*
-checkmk.labels.standard prints the standard artemis Helm labels.
+checkmk.labels.standard prints the standard gitea Helm labels.
 The standard labels are frequently used in metadata.
 */ -}}
 {{- define "checkmk.labels.standard" -}}
-app: {{ template "checkmk.name" . }}
-chart: {{ template "checkmk.chart" . }}
-heritage: {{ .Release.Service | quote }}
-release: {{ .Release.Name | quote }}
+app.kubernetes.io/name: {{ template "checkmk.name" . }}
+helm.sh/chart: {{ template "checkmk.chart" . }}
+app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+app.kubernetes.io/instance: {{ .Release.Name | quote }}
 {{- end -}}
 
 {{- define "imagePullSecret" }}

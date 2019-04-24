@@ -1,6 +1,24 @@
 categories:
 - servicenow
 questions:
+- variable: defaultImage
+  default: true
+  description: "Use default CheckMK image"
+  label: Use Default Image
+  type: boolean
+  show_subquestion_if: false
+  group: "Container Images"
+  subquestions:
+  - variable: image.repository
+    default: reg-proxy.daxdigital.net/overvaakning/checkmk
+    description: "Default CheckMK image"
+    type: string
+    label: CheckMK Server Image
+  - variable: image.tag
+    default: "1.0-develop"
+    description: "The image tag of CheckMK"
+    type: string
+    label: Image Tag For CheckMK Image  
 - variable: persistence.enabled
   description: "Enable StorageClass"
   label: Persistence enabled
